@@ -1,0 +1,16 @@
+.valign {
+    vertical-align: middle !important;
+}
+.big-checkbox {
+    width: 24px;
+    height: 24px;
+}
+.btn-todo {
+    width: 60px;
+}
+.margin-top-10 {
+    margin-top: 10px;
+}
+.strike {
+    text-decoration: line-through;
+}

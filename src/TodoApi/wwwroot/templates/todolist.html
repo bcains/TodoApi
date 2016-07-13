@@ -1,0 +1,55 @@
+
+<div class="row">
+    <button class="btn btn-primary" type="button" ng-click="createNewItem()" ng-disabled="newItem"><span class="glyphicon glyphicon-plus"></span>&nbsp;NEW TASK</button>
+</div>
+<div class="row margin-top-10" ng-show="newItem">
+    <table class="table table-condensed">
+        <thead>
+        <th class="col-sm-12">Create New Task</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="valign">
+                    <input type="text" class="form-control col-sm-12" id="newName" placeholder="Enter task">
+                </td>
+                <td class="valign">
+                    <button class="btn btn-success btn-todo" type="button" ng-click="newItem.save()">SAVE</button>
+                </td>
+                <td class="text-center valign">
+                    <button class="btn btn-danger" type="button" ng-click="newItem.cancel()">CANCEL</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="row margin-top-10">
+    <table class="table table-striped table-condensed table-hover">
+        <thead>
+        <th class="text-center">Status</th>
+        <th class="col-sm-12">Task</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in items" id="row_{{item.key}}">
+                <td class="text-center valign">
+                    <input type="checkbox" class="big-checkbox" id="status_{{item.key}}" ng-model="item.isComplete" ng-click="update()">
+                </td>
+                <td class="valign">
+                    <div class="col-sm-12" ng-hide="item.key==editItem.key" ng-class="{strike: item.isComplete}">{{item.name}}</div>
+                    <input type="text" ng-show="item.key==editItem.key" class="form-control col-sm-12" id="name_{{item.key}}" placeholder="Enter task" value="{{item.name}}">
+                </td>
+                <td class="valign">
+                    <button class="btn btn-primary btn-todo" type="button" ng-hide="item.key==editItem.key" ng-click="edit()">EDIT</button>
+                    <button class="btn btn-success btn-todo" type="button" ng-show="item.key==editItem.key" ng-click="update()">SAVE</button>
+                </td>
+                <td class="text-center valign">
+                    <button class="btn btn-danger" type="button" ng-click="delete()">DELETE</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
